@@ -2,23 +2,23 @@ package screen
 
 import "fmt"
 
-type screen struct {
-	w   int
-	h   int
+type Screen struct {
+	W   int
+	H   int
 	pts []Point
 }
 
-func NewScreen(w int, h int) *screen {
-	return &screen{w: w, h: h}
+func NewScreen(w int, h int) *Screen {
+	return &Screen{W: w, H: h}
 }
 
-func (s *screen) build() [][]rune {
-	content := make([][]rune, s.h)
+func (s *Screen) build() [][]rune {
+	content := make([][]rune, s.H)
 
-	for y := 0; y < s.h; y++ {
-		row := make([]rune, s.w)
+	for y := 0; y < s.H; y++ {
+		row := make([]rune, s.W)
 
-		for x := 0; x < s.w; x++ {
+		for x := 0; x < s.W; x++ {
 			row[x] = '#'
 		}
 
@@ -32,7 +32,7 @@ func (s *screen) build() [][]rune {
 	return content
 }
 
-func (s *screen) print(r [][]rune) {
+func (s *Screen) print(r [][]rune) {
 	for i := 0; i < len(r); i++ {
 		for j := 0; j < len(r[i]); j++ {
 			fmt.Printf("%c", r[i][j])
@@ -41,7 +41,7 @@ func (s *screen) print(r [][]rune) {
 	}
 }
 
-func (s *screen) Draw() {
+func (s *Screen) Draw() {
 	s.print(s.build())
 }
 

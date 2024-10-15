@@ -6,9 +6,9 @@ type Point struct {
 	Char rune
 }
 
-func (p *Point) SetOnScreen(s screen, content [][]rune) [][]rune {
-	crossX := p.X < 0 || p.X >= s.w
-	crossY := p.Y < 0 || p.Y >= s.h
+func (p *Point) SetOnScreen(s Screen, content [][]rune) [][]rune {
+	crossX := p.X < 0 || p.X >= s.W
+	crossY := p.Y < 0 || p.Y >= s.H
 
 	if !crossY && !crossX {
 		content[p.Y][p.X] = p.Char
@@ -17,14 +17,14 @@ func (p *Point) SetOnScreen(s screen, content [][]rune) [][]rune {
 	return content
 }
 
-func (s *screen) AddPoint(x int, y int, char rune) {
+func (s *Screen) AddPoint(x int, y int, char rune) {
 	s.pts = append(s.pts, Point{X: x, Y: y, Char: char})
 }
 
-func (s *screen) AddPointAtB(x int, y int, char rune) {
-	s.pts = append(s.pts, Point{X: x, Y: s.h - 1 - y, Char: char})
+func (s *Screen) AddPointAtB(x int, y int, char rune) {
+	s.pts = append(s.pts, Point{X: x, Y: s.H - 1 - y, Char: char})
 }
 
-func (s *screen) ClearPoints() {
+func (s *Screen) ClearPoints() {
 	s.pts = []Point{}
 }

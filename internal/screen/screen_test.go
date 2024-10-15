@@ -49,11 +49,11 @@ func Test_screen_build(t *testing.T) {
 
 	tests := []struct {
 		name   string
-		fields screen
+		fields Screen
 		want   [][]rune
 	}{
 		{
-			name:   "render 5x4 screen with points",
+			name:   "render 5x4 Screen with points",
 			fields: *s1,
 			want: [][]rune{
 				{'A', 'b', '#', '#', '#'},
@@ -66,9 +66,9 @@ func Test_screen_build(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := &screen{
-				w:   tt.fields.w,
-				h:   tt.fields.h,
+			s := &Screen{
+				W:   tt.fields.W,
+				H:   tt.fields.H,
 				pts: tt.fields.pts,
 			}
 
